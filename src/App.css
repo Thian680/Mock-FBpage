@@ -1,0 +1,1013 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: rgb(24, 25, 26);
+  color: rgb(228, 230, 235);
+  font-size: 15px;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ========== HEADER ========== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(36, 37, 38);
+  height: 56px;
+  padding: 0 8px;
+  border-bottom: 1px solid rgb(58, 59, 60);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8.8px;
+}
+
+.fbLogo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1877F2;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 38.5px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  font-weight: bolder;
+}
+
+.fbLogo svg {
+  margin-top: 9.9px;
+}
+
+.fbLogo:hover {
+  background-color: rgb(60, 148, 255);
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: rgb(176, 179, 184);
+  font-size: 14px;
+}
+
+.searchBar {
+  background-color: rgb(58, 59, 60);
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  padding: 0 12px 0 41.8px;
+  width: 280px;
+  color: rgb(228, 230, 235);
+  font-size: 15px;
+  outline: none;
+}
+
+.searchBar::placeholder,
+.composerInput::placeholder {
+  color: rgb(176, 179, 184);
+  opacity: 1;
+}
+
+.headerCenter {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  max-width: 680px;
+  height: 100%;
+  align-items: center;
+  margin-left: -120px;
+}
+
+.navIcon {
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  width: 112px;
+  height: 56px;
+  font-size: 24.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-bottom: 3.3px solid transparent;
+  border-radius: 8.8px;
+}
+
+.navIcon:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8.8px;
+}
+
+.menuIcon {
+  background-color: rgb(58, 59, 60);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: rgb(228, 230, 235);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.menuIcon:hover {
+  background-color: rgb(80, 81, 82);
+}
+
+.headerProfilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* ========== LAYOUT ========== */
+.main {
+  width: 100%;
+  padding-bottom: 35.2px;
+}
+
+.mainContainer {
+  max-width: 1250px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 17.6px;
+}
+
+.mainContainer:has(.coverContainer) {
+  padding: 0 8.8px;
+}
+
+/* ========== COVER ========== */
+.coverContainer {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+  border-radius: 0 0 11px 11px;
+}
+
+.coverContainer::before {
+  content: "";
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  width: 100vw;
+  height: 150%;
+  background-image: var(--cover-img);
+  background-size: cover;
+  background-position: top center;
+  filter: blur(100px) saturate(0.8) brightness(1);
+  transform: translateX(-50%) scale(1.2); 
+  opacity: 0.45;
+  z-index: -1;
+  
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 25%, rgba(0,0,0,0.7) 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 25%, rgba(0,0,0,0.7) 45%, transparent 100%);
+}
+
+.coverImg {
+  width: 100%;
+  max-height: 460px; 
+  aspect-ratio: 820 / 312; 
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  z-index: 1;
+} 
+
+.coverImg:hover {
+  filter: brightness(108%);
+  cursor: pointer;
+} 
+
+.addCoverBtn {
+  position: absolute;
+  bottom: 10px; /* Simplifies positioning slightly */
+  right: 16px;
+  z-index: 2;
+  background-color: rgb(250, 250, 250);
+  color: rgb(58, 59, 60);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: 14px; /* Standard Meta UI action size */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 630;
+  gap: 8px;
+}
+
+
+/* ========== GREY FULL-WIDTH PROFILE SECTION ========== */
+.profileSection {
+  width: 100%;
+  background-color: #252728;
+  margin-top: 0; 
+  position: relative;
+  z-index: 1;
+}
+
+.profileSectionInner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 17.6px;
+}
+
+/* ========== PROFILE DETAILS ========== */
+.profileDetails {
+  display: flex;
+  align-items: center;
+  gap: 17.6px;
+  padding: 40px 17.6px 32px;
+}
+
+.profilePicWrapper {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  border: 4px solid rgb(36, 37, 38);
+  background-color: rgb(36, 37, 38);
+  flex-shrink: 0;
+  margin-top: -28px; 
+  z-index: 10;       
+}
+
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cameraIcon {
+  position: absolute;
+  bottom: 4.4px;
+  right: 4.4px;
+  background-color: rgb(58, 59, 60);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profileNameText {
+  flex-grow: 1;
+  padding-bottom: 8.8px;
+}
+
+.profileNameText h1 {
+  font-size: 32px;
+  line-height: 41.8px;
+  font-weight: bold;
+}
+
+.profileNameText p {
+  color: rgba(255, 255, 255, 0.808);
+  font-size: 14px;
+  margin-top: 4.4px;
+  font-weight: 600;
+}
+
+.profileActions {
+  display: flex;
+  gap: 8.8px;
+  padding-bottom: 8.8px;
+}
+
+.profileActions p {
+  font-size: 15px;
+}
+
+.btnPrimary,
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 6px;
+  height: 36px;         /* back to FB's actual size */
+  padding: 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background-color: #0866ff;
+  color: white;
+}
+
+.btnSecondary {
+  background-color: rgb(58, 59, 60);
+  color: rgb(228, 230, 235);
+}
+
+.btnSecondary:hover,
+.btnPrimary:hover {
+  filter: brightness(1.1);
+}
+
+/* ========== TABS ========== */
+.profileTabs {
+  display: flex;
+  align-items: center;
+  gap: 4.4px;
+  padding: 10px 17.6px;
+  position: relative; 
+}
+
+.profileTabs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 17.6px;
+  right: 17.6px;
+  border-top: 1.8px solid rgb(84, 86, 88);
+  max-width: 1250px;
+}
+
+
+.tab.active {
+  color: rgb(45, 136, 255);
+  border-bottom-color: rgb(45, 136, 255);
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  height: 48px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 3.3px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6.6px;
+}
+
+.tab:hover {
+  background-color: rgb(58, 59, 60);
+  border-radius: 6.6px;
+}
+
+.tabMoreOptions {
+  margin-left: auto;
+}
+
+/* ========== CONTENT AREA ========== */
+.contentArea {
+  display: flex;
+  gap: 17.6px;
+  padding: 17.6px 17.6px 0;
+  align-items: flex-start;
+}
+
+/* ========== SIDEBAR ========== */
+.sidebar {
+  width: 490px;
+  display: flex;
+  flex-direction: column;
+  gap: 17.6px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 72px;
+  align-self: flex-start;
+}
+
+.card {
+  background-color: rgb(36, 37, 38);
+  border-radius: 8.8px;
+  padding: 17.6px;
+}
+
+.postsCard {
+  padding: 0 17.6px;
+}
+
+.cardSection {
+  padding-bottom: 5px;
+}
+
+.cardSection:last-child {
+  padding-bottom: 0;
+}
+
+.cardSection + .cardSection {
+  padding-top: 17.6px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13.2px;
+}
+
+.cardHeader:last-child {
+  margin-bottom: 0;
+}
+
+.cardHeader h3,
+.card h3 {
+  font-size: 18px;
+}
+
+.editBtn {
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  cursor: pointer;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.editBtn:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+.workItem {
+  display: flex;
+  gap: 13.2px;
+  align-items: center;
+  margin-top: 13.2px;
+  padding: 2px 5px;
+}
+
+.workItem:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+.workLogo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cardHeader .grayText {
+  color: #ffffff;
+}
+
+.grayText {
+  color: rgb(176, 179, 184);
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.grayText img {
+  position: relative;
+  top: 2.2px; 
+}
+
+.grayText img.privacyIcon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  filter: brightness(0) invert(85%);
+  vertical-align: middle;
+}
+
+.addHighlightsBtn {
+  background-color: rgb(58, 59, 60);
+  color: rgb(228, 230, 235);
+  border: none;
+  border-radius: 6.6px;
+  height: 39.6px;
+  padding: 0 17.6px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8.8px;
+}
+
+.blueLink {
+  color: rgb(45, 136, 255);
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* ========== FRIENDS GRID ========== */
+.friendsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13.2px;
+  margin-top: 13.2px;
+}
+
+.friendCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4.4px;
+}
+
+.friendImg {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8.8px;
+}
+
+.friendName {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ========== FEED ========== */
+.feed {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 17.6px;
+  min-width: 0;
+}
+
+.composerTop {
+  display: flex;
+  align-items: center;
+  gap: 8.8px;
+  margin-bottom: 13.2px;
+}
+
+.smallProfilePic {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.postHeader {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+
+.postHeader > div {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.postHeader strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.postHeader .grayText {
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+.moreBtn {
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  font-size: 15px;
+  cursor: pointer;
+  padding: 8.8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.moreBtn:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+.postHeaderPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.composerInput {
+  flex-grow: 1;
+  background-color: rgb(58, 59, 60);
+  border: none;
+  border-radius: 22px;
+  height: 44px;
+  padding: 0 17.6px;
+  color: rgb(228, 230, 235);
+  font-size: 15px;
+  outline: none;
+}
+
+.composerBottom {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid rgb(58, 59, 60);
+  padding-top: 8.8px;
+}
+
+.composerBtn {
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 8.8px;
+  border-radius: 6.6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8.8px;
+}
+
+.composerBtn:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+/* ========== POSTS HEADER ========== */
+.postsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13.2px;
+}
+
+.postsHeaderActions {
+  display: flex;
+  gap: 8.8px;
+}
+
+.viewToggle {
+  display: flex;
+  border-top: 1px solid rgb(58, 59, 60);
+  padding-top: 8.8px;
+  gap: 8.8px;
+}
+
+.viewToggle button {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid transparent;
+  color: rgb(176, 179, 184);
+  padding: 8.8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 6.6px 6.6px 0 0;   
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8.8px;
+}
+
+.viewToggle button:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+.viewToggle button.active {
+  color: rgb(45, 136, 255);
+  border-bottom-color: rgb(45, 136, 255); 
+  background-color: transparent;           
+}
+
+/* ========== POST LISTS ========== */
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 17.6px;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(286px, 1fr));
+  gap: 17.6px;
+}
+
+/* ========== POST CARD ========== */
+
+.postImageBox {
+  width: 100%;
+  border-radius: 8.8px;
+  overflow: hidden;
+  margin-top: 4.4px;
+  border: 1px solid #65686c;
+}
+
+.postImageBox img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== POST STATS ROW ===== */
+.postSummaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8.8px 0;
+  font-size: 14px;
+  color: rgb(176, 179, 184);
+}
+
+.reactionsLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.reactionIcons {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.reactionNames {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statsRight {
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.statsLikes {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.likeIconStack {
+  font-size: 13px;
+}
+
+
+
+.reactionIcons {
+  display: inline-flex;
+}
+
+.reactionIcon {
+  font-size: 15px;
+  margin-right: -4px;
+}
+
+.reactionNames {
+  margin-left: 4px;
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8.8px;
+  padding-top: 8.8px;
+}
+
+.commentItem {
+  display: flex;
+  gap: 8.8px;
+}
+
+.commentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.commentBubble {
+  background-color: rgb(58, 59, 60);
+  border-radius: 14px;
+  padding: 8px 12px;
+  display: inline-block;
+}
+
+.commentBubble strong {
+  font-size: 13px;
+  display: block;
+}
+
+.commentBubble p {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.commentMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgb(176, 179, 184);
+  font-weight: 600;
+  margin-top: 3px;
+  padding-left: 12px;
+}
+
+.commentReplyBtn {
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.commentReplyBtn:hover {
+  text-decoration: underline;
+}
+
+.commentLikeBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ===== ACTION ROW (Like / Comment / Share) ===== */
+.postActionsRow {
+  display: flex;
+  padding-top: 4.4px;
+  margin-top: 4px;
+}
+
+.postActionBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: rgb(176, 179, 184);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 6px;
+  border-radius: 6.6px;
+  cursor: pointer;
+}
+
+.postActionBtn:hover {
+  background-color: rgb(58, 59, 60);
+}
+
+/* ===== COMMENT INPUT ROW ===== */
+.commentInputRow {
+  display: flex;
+  align-items: center;
+  gap: 8.8px;
+  padding-top: 4.4px;
+}
+
+.commentInputWrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(58, 59, 60);
+  border-radius: 22px;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.commentInput {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgb(228, 230, 235);
+  font-size: 14px;
+}
+
+.commentInputIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(176, 179, 184);
+  font-size: 16px;
+}
+
+.commentInputIcons svg {
+  cursor: pointer;
+}
+
+/* ==================SIDE BAR FOOTER============== */
+.sidebarFooter {
+  padding: 0 0px;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 4px;
+}
+
+.footerLinks a {
+  color: rgb(176, 179, 184);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footerCopyright {
+  color: rgb(176, 179, 184);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.footerLinks a:hover {
+  text-decoration: underline;
+}
+
+.footerLinks a:not(:last-child)::after {
+  content: "·";
+  margin: 0 6px;
+  color: rgb(176, 179, 184);
+  text-decoration: none;
+}
+
+.footerIcon {
+  font-size: 14px;
+  color: rgb(176, 179, 184);
+} 
+
+/* ========== FAB ========== */
+.fab {
+  position: fixed;
+  bottom: 26.4px;
+  right: 26.4px;
+  background-color: rgb(58, 59, 60);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 52.8px;
+  height: 52.8px;
+  font-size: 19.8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2.2px 8.8px rgba(0, 0, 0, 0.3);
+}
+
